@@ -4,8 +4,8 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
     : Window{ xy, w, h, title },
       quit_button{ Graph_lib::Point{x_max() - 120 - 15, 15}, 120, 40, "Quit", cb_quit },
       menu_button{ Graph_lib::Point{x_max() - 120 - 15, 60}, 120, 40, "Menu", cb_menu },
-      find_way_button{ Graph_lib::Point{x_max() - 120 - 15, 60}, 120, 40, "Find way", cb_close_menu },
-      add_point_button{ Graph_lib::Point{x_max() - 120 - 15, 105}, 120, 40, "Add point", cb_close_menu },
+      find_way_button{ Graph_lib::Point{x_max() - 120 - 15, 60}, 120, 40, "Find way", cb_find_way },
+      add_point_button{ Graph_lib::Point{x_max() - 120 - 15, 105}, 120, 40, "Add point", cb_add_point },
       close_menu_button{ Graph_lib::Point{x_max() - 120 - 15, 150}, 120, 40, "x", cb_close_menu }
 
 {
@@ -43,3 +43,15 @@ void Navig_window::hide_menu()
     menu_button.show();
 }
 
+void Navig_window::add_point()
+{
+    //TO DO
+    hide_menu();
+}
+
+
+void Navig_window::find_way()
+{
+    //TO DO;
+    hide_menu();
+}
