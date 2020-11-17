@@ -29,7 +29,10 @@ Project {
             "Constants.h",
 
             "Navig_win.h",
-            "Navig_win.cpp"
+            "Navig_win.cpp",
+
+            "add_point_win.h",
+            "add_point_win.cpp"
 
         ]
 

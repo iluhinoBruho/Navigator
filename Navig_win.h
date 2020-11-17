@@ -6,6 +6,7 @@
 #include "../Graph_lib/Graph.h"
 
 #include "Constants.h"
+#include "add_point_win.h"
 
 
 struct Navig_window: Graph_lib::Window

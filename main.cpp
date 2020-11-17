@@ -9,7 +9,7 @@ int main()
 {
     try
     {
-        Navig_window win({100,100}, win_width, win_height, main_name);
+        Navig_window win(win_corner, win_width, win_height, main_name);
 
         return Graph_lib::gui_main();
 

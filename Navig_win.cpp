@@ -45,8 +45,9 @@ void Navig_window::hide_menu()
 
 void Navig_window::add_point()
 {
-    //TO DO
     hide_menu();
+    Add_window add_p_win;
+    Graph_lib::gui_main();
 }
 
 
