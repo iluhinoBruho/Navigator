@@ -9,6 +9,8 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
       close_menu_button{ Graph_lib::Point{x_max() - 120 - 15, 150}, 120, 40, "x", cb_close_menu }
 
 {
+    add_p_win.hide();
+
     attach(quit_button);
     attach(menu_button);
     attach(find_way_button);
@@ -24,6 +26,15 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
     map.set_fill_color(Graph_lib::Color::white);
 
     attach(map);
+
+}
+
+void Navig_window::quit()
+{
+    //for win in windows_open hide()
+
+    add_p_win.hide();
+    hide();
 }
 
 void Navig_window::menu()
@@ -45,8 +56,13 @@ void Navig_window::hide_menu()
 
 void Navig_window::add_point()
 {
+    if(add_active)
+    {
+        hide_menu();
+        return;
+    }
     hide_menu();
-    Add_window add_p_win;
+    add_p_win.show();
     Graph_lib::gui_main();
 }
 
@@ -56,3 +72,4 @@ void Navig_window::find_way()
     //TO DO;
     hide_menu();
 }
+

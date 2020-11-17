@@ -22,18 +22,23 @@ struct Navig_window: Graph_lib::Window
 
     Graph_lib::Rectangle map{{map_margin, map_margin}, map_width, map_height};
 
+    bool add_active = false;
+
+    Add_window add_p_win;
+
 private:
     static void cb_quit(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).quit(); }
     static void cb_menu(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).menu(); }
     static void cb_close_menu (Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).hide_menu(); }
     static void cb_add_point(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).add_point(); }
     static void cb_find_way(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).find_way(); }
-    void quit() { hide(); }
+    void quit();
     void menu();
     void show_menu();
     void hide_menu();
     void add_point();
     void find_way();
+
 };
 
 
