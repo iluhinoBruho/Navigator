@@ -1,7 +1,9 @@
 #include <iostream>
 
 #include "Navig_win.h"
+#include "add_point_win.h"
 #include "Constants.h"
+#include "town.h"
 
 
 

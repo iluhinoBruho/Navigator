@@ -6,6 +6,10 @@
 #include "../Graph_lib/Graph.h"
 
 #include "Constants.h"
+#include "Globals.h"
+#include "town.h"
+
+//#include "Navig_win.h"  ->  cycle with no ending
 
 
 struct Add_window: Graph_lib::Window
@@ -13,7 +17,6 @@ struct Add_window: Graph_lib::Window
     Add_window();
 
     Graph_lib::Button close_add_button;
-
 
 
 private:

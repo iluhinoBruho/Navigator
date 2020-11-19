@@ -6,7 +6,9 @@
 #include "../Graph_lib/Graph.h"
 
 #include "Constants.h"
+#include "Globals.h"
 #include "add_point_win.h"
+#include "town.h"
 
 
 struct Navig_window: Graph_lib::Window
@@ -22,9 +24,21 @@ struct Navig_window: Graph_lib::Window
 
     Graph_lib::Rectangle map{{map_margin, map_margin}, map_width, map_height};
 
+
     bool add_active = false;
 
     Add_window add_p_win;
+
+    Graph_lib::Vector_ref<Town> towns;
+
+    void update_map();
+
+    static void add_town();
+    static void cb_clicked(Graph_lib::Address widget, Graph_lib::Address win)
+    {
+        Graph_lib::reference_to<Navig_window>(win).clicked(widget);
+    }
+    void clicked(Graph_lib::Address widget);
 
 private:
     static void cb_quit(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).quit(); }
@@ -32,6 +46,8 @@ private:
     static void cb_close_menu (Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).hide_menu(); }
     static void cb_add_point(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).add_point(); }
     static void cb_find_way(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).find_way(); }
+
+
     void quit();
     void menu();
     void show_menu();

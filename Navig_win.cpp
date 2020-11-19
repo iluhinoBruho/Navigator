@@ -1,4 +1,5 @@
 #include "Navig_win.h"
+#include "Globals.h"
 
 Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string title)
     : Window{ xy, w, h, title },
@@ -27,6 +28,8 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
 
     attach(map);
 
+    Town added({600,600}, cb_clicked, "Juckovskii");
+    attach(added);
 }
 
 void Navig_window::quit()
@@ -56,20 +59,50 @@ void Navig_window::hide_menu()
 
 void Navig_window::add_point()
 {
-    if(add_active)
-    {
-        hide_menu();
-        return;
-    }
-    hide_menu();
-    add_p_win.show();
-    Graph_lib::gui_main();
-}
+//    if(add_active)
+//    {
+//        hide_menu();
+//        return;
+//    }
+//    hide_menu();
+//    add_p_win.show();
 
+//    Town added({100,100}, cb_clicked, "Juckovskii");
+//    //towns[name] = added;
+//    //towns.push_back(added);
+//    //attach(towns[0]);
+//    attach(added);
+//    added.show();
+//    //Graph_lib::gui_main();
+//
+}
 
 void Navig_window::find_way()
 {
     //TO DO;
     hide_menu();
 }
+
+
+void Navig_window::clicked(Graph_lib::Address widget)
+{
+    Fl_Widget& w = Graph_lib::reference_to<Fl_Widget>(widget);
+    //Town& c ( Graph_lib::Point { w.x(), w.y() } );
+    //c.activate();
+}
+
+//void Navig_window::update_map()
+//{
+//    for(int i = 0; i < towns.size(); ++i)
+//        attach(towns[i]);
+//    redraw();
+//}
+
+//void Navig_window::add_town()
+//{
+//    Town added({100,100}, cb_clicked, "Juckovskii");
+//    //towns[name] = added;
+//    towns.push_back(added);
+//    attach(added);
+//}
 
