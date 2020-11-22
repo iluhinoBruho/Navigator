@@ -22,6 +22,6 @@ constexpr int map_width = int(win_width*0.8);
 constexpr int map_height = int(win_height * 0.93);
 
 //town
-const int town_size = 100;
+const int town_size = 50;
 
 #endif

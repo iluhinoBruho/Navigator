@@ -27,7 +27,6 @@ Project {
             "main.cpp",
 
             "Constants.h",
-            "Globals.h",
 
             "Navig_win.h",
             "Navig_win.cpp",

@@ -1,12 +1,11 @@
 #include "Navig_win.h"
-#include "Globals.h"
 
 Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string title)
     : Window{ xy, w, h, title },
       quit_button{ Graph_lib::Point{x_max() - 120 - 15, 15}, 120, 40, "Quit", cb_quit },
       menu_button{ Graph_lib::Point{x_max() - 120 - 15, 60}, 120, 40, "Menu", cb_menu },
       find_way_button{ Graph_lib::Point{x_max() - 120 - 15, 60}, 120, 40, "Find way", cb_find_way },
-      add_point_button{ Graph_lib::Point{x_max() - 120 - 15, 105}, 120, 40, "Add point", cb_add_point },
+      add_point_button{ Graph_lib::Point{x_max() - 120 - 15, 105}, 120, 40, "Add town", cb_add_point },
       close_menu_button{ Graph_lib::Point{x_max() - 120 - 15, 150}, 120, 40, "x", cb_close_menu }
 
 {
@@ -24,12 +23,13 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
 
     map.set_color(Graph_lib::Color::black);
     map.draw_lines();
-    map.set_fill_color(Graph_lib::Color::white);
+
+    //to implement: map should be under everything
+    //now it covers everything so you see nothing located on the sq of map
+    //map.set_fill_color(Graph_lib::Color::white);
 
     attach(map);
 
-    Town added({600,600}, cb_clicked, "Juckovskii");
-    attach(added);
 }
 
 void Navig_window::quit()
@@ -57,24 +57,34 @@ void Navig_window::hide_menu()
     menu_button.show();
 }
 
+
+
+#include <iostream>
 void Navig_window::add_point()
 {
-//    if(add_active)
-//    {
-//        hide_menu();
-//        return;
-//    }
-//    hide_menu();
-//    add_p_win.show();
 
-//    Town added({100,100}, cb_clicked, "Juckovskii");
-//    //towns[name] = added;
-//    //towns.push_back(added);
-//    //attach(towns[0]);
-//    attach(added);
-//    added.show();
-//    //Graph_lib::gui_main();
-//
+    hide_menu();
+    add_p_win.show();
+
+    //new Town{{0,0},cb_clicked, "Default"};
+
+    //Town* test = &added;
+//    std::cerr << "Town default " << &added << " " << added.pos.x << " " << added.pos.y <<std::endl;
+
+    int x, y;
+    std::string name;
+    if(add_p_win.get_point(x, y, name))
+    {
+        towns.push_back(new Town{{x,y}, cb_clicked, name});
+
+        if(towns.size())
+            std::cerr << "Last town in towns " << towns[towns.size() - 1].mark << " " << towns[towns.size() - 1].pos.x << " " << towns[towns.size() - 1].pos.y <<std::endl;
+//        std::cerr << "Town added " << added.mark << " " << added.pos.x << " " << added.pos.y <<std::endl;
+//        towns.push_back(added);
+//        std::cerr << "Town in towns" << added.mark << " " << added.pos.x << " " << added.pos.y <<std::endl;
+        update_map();
+//        return;
+    }
 }
 
 void Navig_window::find_way()
@@ -84,25 +94,46 @@ void Navig_window::find_way()
 }
 
 
+//now in development
 void Navig_window::clicked(Graph_lib::Address widget)
 {
-    Fl_Widget& w = Graph_lib::reference_to<Fl_Widget>(widget);
+    //    //Showing mark of button  ( name  of town )
+
+
+//    Fl_Widget& w = Graph_lib::reference_to<Fl_Widget>(widget);
+
+//    std::cerr << "Coords if click: (" << w.x() << "," << w.y() <<")" << std::endl;
+
+//    Graph_lib::Text click{{w.x(), w.y()}, "SOME"};
+//    attach(click);
+//    redraw();
     //Town& c ( Graph_lib::Point { w.x(), w.y() } );
     //c.activate();
 }
 
-//void Navig_window::update_map()
-//{
-//    for(int i = 0; i < towns.size(); ++i)
-//        attach(towns[i]);
-//    redraw();
-//}
 
-//void Navig_window::add_town()
-//{
-//    Town added({100,100}, cb_clicked, "Juckovskii");
-//    //towns[name] = added;
-//    towns.push_back(added);
-//    attach(added);
-//}
 
+void Navig_window::update_map()
+{
+    for(int i = 0; i < towns.size(); ++i)
+    {
+        attach(towns[i]);
+
+        std::cerr << "Town " << i << towns[i].mark << " " << towns[i].pos.x << " " << towns[i].pos.y <<std::endl;
+
+    }
+    redraw();
+}
+
+void Navig_window::remove_point(std::string s)
+{
+    //TO DO:
+    //removing from graph & from towns
+
+//    for(: towns)
+//    {
+//        if(el.name == s)
+//            delete el
+//    }
+//    delete towns[s];
+}

@@ -10,11 +10,13 @@
 #include <string>
 
 
-class Town : public Graph_lib::Button
+struct Town : Graph_lib::Button
 {
 public:
     Town(Graph_lib::Point xy, Graph_lib::Callback cb, const std::string name);
     ~Town(){ };
+
+    Graph_lib::Point pos;
 
     std::string mark;
     bool is_active = false;
@@ -22,7 +24,7 @@ public:
     void attach(Graph_lib::Window& win) override;
 
 private:
-    void remove(std::string s);
+
     void clicked();
 };
 

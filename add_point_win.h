@@ -6,7 +6,6 @@
 #include "../Graph_lib/Graph.h"
 
 #include "Constants.h"
-#include "Globals.h"
 #include "town.h"
 
 //#include "Navig_win.h"  ->  cycle with no ending
@@ -17,11 +16,23 @@ struct Add_window: Graph_lib::Window
     Add_window();
 
     Graph_lib::Button close_add_button;
+    Graph_lib::Button add_button;
+
+    bool cancel_clicked = false;
+    bool add_clicked = false;
+    bool get_point(int& x, int& y, std::string& name);
+    void wait_for_button();
+
+    Graph_lib::In_box X;
+    Graph_lib::In_box Y;
+    Graph_lib::In_box Name;
 
 
 private:
     static void cb_close_add (Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Add_window> (addr).hide_add(); }
+    static void cb_add (Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Add_window> (addr).add(); }
     void hide_add();
+    void add();
 };
 
 
