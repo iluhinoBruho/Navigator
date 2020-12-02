@@ -8,6 +8,7 @@
 #include "Constants.h"
 #include "add_point_win.h"
 #include "town.h"
+#include "Logics.h"
 
 
 struct Navig_window: Graph_lib::Window
@@ -27,13 +28,13 @@ struct Navig_window: Graph_lib::Window
     Add_window add_p_win;
 
     Graph_lib::Vector_ref<Town> towns;
+    Graph_lib::Lines roads;
+    Matrix graph;
 
 
     void update_map();
 
-    void remove_point(std::string s);
-
-
+    void draw_way(std::vector<std::string> path);
 
 private:
     static void cb_clicked(Graph_lib::Address widget, Graph_lib::Address win) { Graph_lib::reference_to<Navig_window>(win).clicked(widget); }
@@ -49,7 +50,11 @@ private:
     void show_menu();
     void hide_menu();
     void add_point();
+    void remove_point();
     void find_way();
+
+    bool town_exists(std::string s) const;
+    bool bad_coordinates(int x, int y) const;
 
 };
 

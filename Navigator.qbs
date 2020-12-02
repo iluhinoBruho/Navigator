@@ -35,7 +35,13 @@ Project {
             "add_point_win.cpp",
 
             "town.h",
-            "town.cpp"
+            "town.cpp",
+
+            "Logics.h",
+            "Logics.cpp",
+
+            "Matrix.h",
+            "Matrix.cpp"
 
         ]
 

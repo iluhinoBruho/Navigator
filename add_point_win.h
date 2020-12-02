@@ -21,11 +21,14 @@ struct Add_window: Graph_lib::Window
     bool cancel_clicked = false;
     bool add_clicked = false;
     bool get_point(int& x, int& y, std::string& name);
+//    bool ptr_get_point(Town* added); //, void* cb_clicked(Graph_lib::Address widget, Graph_lib::Address win));
     void wait_for_button();
 
     Graph_lib::In_box X;
     Graph_lib::In_box Y;
     Graph_lib::In_box Name;
+
+
 
 
 private:

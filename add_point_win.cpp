@@ -14,6 +14,10 @@ Add_window::Add_window()
     attach(close_add_button);
     attach(X);
     attach(Y);
+
+//    Doesn't work for some reason
+//    Graph_lib::Text descr{{15, 15}, "DESCRIPTION"};
+//    attach(descr);
 }
 
 
@@ -42,7 +46,6 @@ bool Add_window::get_point(int& x, int& y, std::string& name)
         y = Y.get_int();
         name = Name.get_string();
 
-
         add_clicked = false;
         return true;
     }
@@ -52,6 +55,34 @@ bool Add_window::get_point(int& x, int& y, std::string& name)
     return false;
 
 }
+
+//bool Add_window::ptr_get_point(Town* added) //,  void* cb(Graph_lib::Address widget, Graph_lib::Address win))
+//{
+//    show();
+//    wait_for_button();
+
+//    if(add_clicked)
+//    {
+//        //Town
+//        int x = X.get_int();
+//        int y = Y.get_int();
+//        std:: string name = Name.get_string();
+
+//        added->pos.x = x;
+//        added->pos.y = x;
+//        added->mark = name;
+//        added->move(x, y)
+
+//        //added = new Town{{x, y}, *cb, name };
+
+//        add_clicked = false;
+//        return true;
+//    }
+
+
+//    cancel_clicked = false;
+//    return false;
+//}
 
 
 void Add_window::wait_for_button()

@@ -13,7 +13,7 @@ const std::string main_name = "Navigator";
 
 //add_win
 constexpr int win_add_w = 400;
-constexpr int win_add_h = 300;
+constexpr int win_add_h = 260;
 const std::string add_name = "Add point";
 
 //map
@@ -23,5 +23,8 @@ constexpr int map_height = int(win_height * 0.93);
 
 //town
 const int town_size = 50;
+
+//logics
+const int INF = win_height * win_width;  //INTMAX_MAX;
 
 #endif

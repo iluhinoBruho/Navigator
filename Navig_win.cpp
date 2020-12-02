@@ -24,7 +24,9 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
     map.set_color(Graph_lib::Color::black);
     map.draw_lines();
 
-    //to implement: map should be under everything
+    //TO DO:
+    //(to implement)
+    //map should be under everything
     //now it covers everything so you see nothing located on the sq of map
     //map.set_fill_color(Graph_lib::Color::white);
 
@@ -59,37 +61,42 @@ void Navig_window::hide_menu()
 
 
 
-#include <iostream>
 void Navig_window::add_point()
 {
 
     hide_menu();
     add_p_win.show();
 
-    //new Town{{0,0},cb_clicked, "Default"};
-
-    //Town* test = &added;
-//    std::cerr << "Town default " << &added << " " << added.pos.x << " " << added.pos.y <<std::endl;
-
     int x, y;
     std::string name;
     if(add_p_win.get_point(x, y, name))
     {
+        if(town_exists(name)||bad_coordinates(x, y))
+        {
+            //give user some notification about this
+            return;
+        }
         towns.push_back(new Town{{x,y}, cb_clicked, name});
-
-        if(towns.size())
-            std::cerr << "Last town in towns " << towns[towns.size() - 1].mark << " " << towns[towns.size() - 1].pos.x << " " << towns[towns.size() - 1].pos.y <<std::endl;
-//        std::cerr << "Town added " << added.mark << " " << added.pos.x << " " << added.pos.y <<std::endl;
-//        towns.push_back(added);
-//        std::cerr << "Town in towns" << added.mark << " " << added.pos.x << " " << added.pos.y <<std::endl;
         update_map();
-//        return;
+        graph.add_vertex(name);
     }
+
+    Graph_lib::gui_main(); // to correctly close add_p_win
+
 }
 
 void Navig_window::find_way()
 {
     //TO DO;
+
+//    std::string start, finish;
+//    if(find_way_win.get_names(start, finish))
+//    {
+//        //list of towns' names that is in order of following the shortest path
+//        std::vector<std::string> path = get_way(start, finish);
+//        draw_way(path);
+//    }
+
     hide_menu();
 }
 
@@ -125,15 +132,42 @@ void Navig_window::update_map()
     redraw();
 }
 
-void Navig_window::remove_point(std::string s)
+void Navig_window::remove_point()
 {
     //TO DO:
     //removing from graph & from towns
 
-//    for(: towns)
-//    {
-//        if(el.name == s)
-//            delete el
-//    }
-//    delete towns[s];
 }
+
+void Navig_window::draw_way(std::vector<std::string> path)
+{
+    if(path.size() == 0) //pass doesn't exist
+    {
+        //show some notification to user
+        return;
+    }
+    //TO DO
+    //drawing highlighted lines between cur and prev town of pass
+    //(its guaranteed that those roads existed)
+
+    //for(int i = 1; i < path.size(); ++i)
+    //    line(center)
+
+}
+
+bool Navig_window::town_exists(std::string s) const
+{
+    for(int i = 0; i < towns.size(); ++i)
+        if(towns[i].mark == s)
+            return true;
+    return false;
+}
+
+bool Navig_window::bad_coordinates(int x, int y) const
+{
+    if(x < 0 || y < 0 || x > map_width + town_size || y + town_size > map_height)
+        return true;
+    return false;
+}
+
+
