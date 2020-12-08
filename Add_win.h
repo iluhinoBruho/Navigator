@@ -9,7 +9,6 @@
 #include "town.h"
 
 #include <string>
-//#include "Navig_win.h"  ->  cycle with no ending
 
 
 struct Add_window: Graph_lib::Window

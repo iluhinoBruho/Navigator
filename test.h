@@ -6,6 +6,7 @@
 #include <string>
 
 #include "Navig_win.h"
+#include "Logics.h"
 
 void test(Navig_window& win);
 

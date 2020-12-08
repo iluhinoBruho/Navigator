@@ -1,4 +1,4 @@
-#include "add_point_win.h"
+#include "Add_win.h"
 
 Add_window::Add_window(const std::string& confirm_button_name, const std::string& win_name)
     : Window{ {win_corner.x + 150, win_corner.y + 150}, win_add_w, win_add_h, win_name },

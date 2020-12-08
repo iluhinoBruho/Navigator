@@ -46,10 +46,8 @@ std::vector<int> Dejikstra(const table& g, int start, int finish)
 
     std::vector<int> path;
     if(dist[finish] == INF)
-    {
-        std::cout << "NO WAY" << std::endl;
-        return path;
-    }
+        return path; //no way - returning an empty vector
+
     for (int vertex = finish; vertex != start; vertex = prev[vertex])
         path.push_back (vertex);
     path.push_back (start);

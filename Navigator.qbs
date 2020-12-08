@@ -31,8 +31,8 @@ Project {
             "Navig_win.h",
             "Navig_win.cpp",
 
-            "add_point_win.h",
-            "add_point_win.cpp",
+            "Add_win.h",
+            "Add_win.cpp",
 
             "town.h",
             "town.cpp",

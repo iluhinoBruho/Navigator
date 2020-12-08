@@ -21,6 +21,10 @@ const std::string add_t_win_name = "Add town";
 const std::string find_w_win_name = "Find way";
 
 
+//add roads mode
+const std::string add_roads_txt = "Adding roads is active";
+//const Graph_lib::Point pos_add_roads_txt;
+
 //map
 constexpr int map_margin = 20;
 constexpr int map_width = 800;//int(win_width*0.8);

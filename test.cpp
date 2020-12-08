@@ -14,5 +14,18 @@ void test(Navig_window& win)
         win.attach(win.towns[i]);
         win.attach(win.towns[i].frame);
     }
+
+//    std::string name_a, name_b;
+//    name_a = "4";
+//    for(int i = 0; i < 3; ++i)
+//    {
+//        name_b = std::to_string(i + 1);
+//        std::cout << win.get_town_test(name_a) << std::endl;
+//        //std::cout << win.get_town_test(name_a)->center.x << std::endl;
+//        //double road_length = distance(win.get_town_test(name_a).center, win.get_town_test(name_b).center);
+//        win.graph.add_edge(name_a, name_b, 11);//road_length);
+//        //win.roads.push_back(new Road((, (win.get_town_test(name_b))->center, name_a, name_b));
+//    }
+
     win.redraw();
 }

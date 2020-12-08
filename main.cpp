@@ -2,7 +2,7 @@
 
 #include "../Graph_lib/Graph.h"
 #include "Navig_win.h"
-#include "add_point_win.h"
+#include "Add_win.h"
 #include "Constants.h"
 #include "town.h"
 #include "Logics.h"
