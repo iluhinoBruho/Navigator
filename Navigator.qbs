@@ -37,11 +37,20 @@ Project {
             "town.h",
             "town.cpp",
 
+            "road.h",
+            "road.cpp",
+
             "Logics.h",
             "Logics.cpp",
 
             "Matrix.h",
-            "Matrix.cpp"
+            "Matrix.cpp",
+
+            "axis.h",
+            "axis.cpp",
+
+            "test.h",
+            "test.cpp"
 
         ]
 

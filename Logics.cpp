@@ -15,7 +15,7 @@ std::vector<std::string> get_way(const Matrix& graph, std::string s, std::string
 std::vector<int> Dejikstra(const table& g, int start, int finish)
 {
     int n = g.size();
-    std::vector<int> dist (n, INF);
+    std::vector<double> dist (n, INF);
     std::vector<int> prev(n);
     dist[start] = 0;
     std::vector<char> visited(n);
@@ -32,8 +32,8 @@ std::vector<int> Dejikstra(const table& g, int start, int finish)
 
         for (int j = 0; j < g[v].size(); ++j)
         {
-            int to = j; // j is vertex which we try to relax
-            int len = g[v][j]; //lenght of edge from choosen vertex v to vertex j
+            double to = j; // j is vertex which we try to relax
+            double len = g[v][j]; //lenght of edge from choosen vertex v to vertex j
             if (dist[v] + len < dist[to])
             {
                 dist[to] = dist[v] + len;
@@ -55,4 +55,9 @@ std::vector<int> Dejikstra(const table& g, int start, int finish)
     path.push_back (start);
     std::reverse (path.begin(), path.end());
     return path;
+}
+
+double distance(Graph_lib::Point a, Graph_lib::Point b)
+{
+    return pow((pow((a.x - b.x), 2) + pow((a.y - b.y), 2)), 0.5);
 }

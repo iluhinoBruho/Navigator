@@ -4,7 +4,7 @@
 Matrix::Matrix(int n)
     : size{n}
 {
-   mat = new table(n, std::vector<int>(n, INF));
+   mat = new table(n, std::vector<double>(n, INF));
 }
 
 Matrix::Matrix(const Matrix& a)
@@ -21,7 +21,7 @@ void Matrix::del_cols_rows(int *idxs, int n)
 
     //assuming that indexs coming in 0 indexation
     std::sort(idxs, idxs + n); // sorting indexes for correct work of alghoritm
-    table* mat_new = new table(size - n, std::vector<int>(size - n));
+    table* mat_new = new table(size - n, std::vector<double>(size - n));
     int del_rows = 0; // amount of deleted rows
     for(int i = 0; i < size; ++i)
     {
@@ -55,7 +55,7 @@ void Matrix::add_vertex(std::string name)
     size += 1;
     for(int i = 0; i < (*mat).size(); ++i)
         (*mat)[i].push_back(INF); //just added isnt connected with any
-    (*mat).push_back(std::vector<int>(size, INF));
+    (*mat).push_back(std::vector<double>(size, INF));
 }
 
 void Matrix::remove_vertex(std::string name)
@@ -76,7 +76,7 @@ void Matrix::remove_vertex(std::string name)
 
 }
 
-void Matrix::add_edge(std::string a, std::string b, int weight)
+void Matrix::add_edge(std::string a, std::string b, double weight)
 {
     int idxa = get_num(a);
     int idxb = get_num(b);

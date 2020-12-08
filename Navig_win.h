@@ -8,7 +8,9 @@
 #include "Constants.h"
 #include "add_point_win.h"
 #include "town.h"
+#include "road.h"
 #include "Logics.h"
+#include "axis.h"
 
 
 struct Navig_window: Graph_lib::Window
@@ -20,15 +22,20 @@ struct Navig_window: Graph_lib::Window
 
     Graph_lib::Button find_way_button;
     Graph_lib::Button add_point_button;
+    Graph_lib::Button add_road_button;
     Graph_lib::Button close_menu_button;
 
-    Graph_lib::Rectangle map{{map_margin, map_margin}, map_width, map_height};
+    Axis_imp X{Axis_imp::Orientation::x, start_map, map_width, 10, "X"};
+    Axis_imp Y{Axis_imp::Orientation::y, start_map, map_height, 8, "Y"};
+    Graph_lib::Rectangle map{start_map, map_width, map_height};
 
+    //Road check;
 
-    Add_window add_p_win;
-
+    Find_way_window find_way_win;
+    Add_point_window add_p_win;
+    Add_road_window add_road_win;
     Graph_lib::Vector_ref<Town> towns;
-    Graph_lib::Lines roads;
+    Graph_lib::Vector_ref<Road> roads;
     Matrix graph;
 
 
@@ -36,12 +43,15 @@ struct Navig_window: Graph_lib::Window
 
     void draw_way(std::vector<std::string> path);
 
+    //for testing
+    void clicked_test(Graph_lib::Address widget) {clicked(widget);}
 private:
     static void cb_clicked(Graph_lib::Address widget, Graph_lib::Address win) { Graph_lib::reference_to<Navig_window>(win).clicked(widget); }
     static void cb_quit(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).quit(); }
     static void cb_menu(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).menu(); }
     static void cb_close_menu (Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).hide_menu(); }
     static void cb_add_point(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).add_point(); }
+    static void cb_add_road(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).add_road(); }
     static void cb_find_way(Graph_lib::Address, Graph_lib::Address addr) { Graph_lib::reference_to<Navig_window> (addr).find_way(); }
 
     void clicked(Graph_lib::Address widget);
@@ -50,11 +60,17 @@ private:
     void show_menu();
     void hide_menu();
     void add_point();
+    void add_road();
     void remove_point();
     void find_way();
 
     bool town_exists(std::string s) const;
     bool bad_coordinates(int x, int y) const;
+
+    Town& get_town(std::string name);
+    Town* get_town(int x, int y);
+    Town* get_town_ptr(std::string name);
+    Road* get_road(Graph_lib::Point first, Graph_lib::Point second);
 
 };
 

@@ -8,27 +8,22 @@
 #include "Constants.h"
 #include "town.h"
 
+#include <string>
 //#include "Navig_win.h"  ->  cycle with no ending
 
 
 struct Add_window: Graph_lib::Window
 {
-    Add_window();
-
+    Add_window(const std::string& confirm_button_name = "confirm", const std::string& win_name = "");
+    
+    
     Graph_lib::Button close_add_button;
     Graph_lib::Button add_button;
 
     bool cancel_clicked = false;
     bool add_clicked = false;
-    bool get_point(int& x, int& y, std::string& name);
-//    bool ptr_get_point(Town* added); //, void* cb_clicked(Graph_lib::Address widget, Graph_lib::Address win));
+
     void wait_for_button();
-
-    Graph_lib::In_box X;
-    Graph_lib::In_box Y;
-    Graph_lib::In_box Name;
-
-
 
 
 private:
@@ -39,5 +34,39 @@ private:
 };
 
 
+struct Add_road_window: Add_window
+{
+    Add_road_window();
+
+    Graph_lib::In_box Name_a;
+    Graph_lib::In_box Name_b;
+
+
+    bool get_names(std::string& a, std::string& b);
+};
+
+struct Add_point_window: Add_window
+{
+    Add_point_window(std::string win_name = "Add town");
+
+    //std::string win_name = "Add town";
+
+    Graph_lib::In_box X;
+    Graph_lib::In_box Y;
+    Graph_lib::In_box Name;
+
+    bool get_point(int& x, int& y, std::string& name);
+
+};
+
+struct Find_way_window : Add_window
+{
+    Find_way_window();
+
+    Graph_lib::In_box Name_a;
+    Graph_lib::In_box Name_b;
+
+    bool get_names(std::string& a, std::string& b);
+};
 
 #endif

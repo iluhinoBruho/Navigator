@@ -9,7 +9,7 @@
 #include "Constants.h"
 
 
-using table = std::vector<std::vector<int>>;
+using table = std::vector<std::vector<double>>;
 
 //graph with fast removing/adding cols/rows
 class Matrix
@@ -26,7 +26,7 @@ public:
 
 
     void add_vertex(std::string s);
-    void add_edge(std::string a, std::string b, int w);
+    void add_edge(std::string a, std::string b, double w);
     void remove_vertex(std::string s);
     void remove_edge(std::string a, std::string b);
 

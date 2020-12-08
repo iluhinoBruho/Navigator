@@ -14,18 +14,21 @@ struct Town : Graph_lib::Button
 {
 public:
     Town(Graph_lib::Point xy, Graph_lib::Callback cb, const std::string name);
-    ~Town(){ };
+    //~Town(){ };
 
     Graph_lib::Point pos;
+    Graph_lib::Point center;
+
+    Graph_lib::Circle frame;
+
 
     std::string mark;
     bool is_active = false;
 
     void attach(Graph_lib::Window& win) override;
 
-private:
+    void act();
 
-    void clicked();
 };
 
 
