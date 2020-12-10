@@ -4,7 +4,6 @@ std::vector<std::string> get_way(const Matrix& graph, std::string s, std::string
 {
     int start = graph.get_num(s);
     int finish = graph.get_num(f);
-    std::cout << start << " " << finish << " <START I FINISH" << std::endl;
     std::vector<int> int_path = Dejikstra(graph.data(), start, finish);
     std::vector<std::string> str_path;
     for(auto el : int_path)

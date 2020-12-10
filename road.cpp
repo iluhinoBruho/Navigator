@@ -8,7 +8,7 @@ Road::Road(Graph_lib::Point a, Graph_lib::Point b,  std::string name_a, std::str
       name_first{name_a},
       name_second{name_b}
 {
-    std::cerr << name_a << " " << name_b << " got the road" << std::endl;
+
 }
 
 std::pair<Graph_lib::Point, Graph_lib::Point> Road::get_coords(Graph_lib::Point a, Graph_lib::Point b)
@@ -24,18 +24,12 @@ std::pair<Graph_lib::Point, Graph_lib::Point> Road::get_coords(Graph_lib::Point 
     double abcos = abs(b.x - a.x) / dist;
     double absin = abs(a.y - b.y) / dist;
 
-    int dx = static_cast<int>(double(town_size) * pow(2, 0.5) / 2 * abcos);//res.first.x - res.second.x;
-    int dy = static_cast<int>(double(town_size) * pow(2, 0.5)  / 2 * absin);//res.first.y - res.second.y;
+    int dx = static_cast<int>(double(town_size) * pow(2, 0.5) / 2 * abcos);
+    int dy = static_cast<int>(double(town_size) * pow(2, 0.5)  / 2 * absin);
 
 
     if(a.x >= b.x && a.y >= b.y)
     {
-
-//        res.first.x +=  int(dx * k);
-//        res.first.y +=  int(dy * k);
-
-//        res.second.x -= int(dx * k);
-//        res.second.y -= int(dy * k);
         res.first.x -= dx;
         res.first.y -= dy;
 

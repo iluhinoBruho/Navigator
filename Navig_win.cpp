@@ -16,8 +16,6 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
     add_road_win.hide();
     find_way_win.hide();
 
-    //add_roads_is_active({x_max() - 120 - 15, y_max() - 95 - 15}, add_roads_txt);
-    //attach(add_roads_is_active);
     add_roads_is_active.set_color(Graph_lib::Color::invisible);
 
 
@@ -40,13 +38,6 @@ Navig_window::Navig_window(Graph_lib::Point xy, int w, int h, const std::string 
     map.set_color(Graph_lib::Color::black);
     map.draw_lines();
     attach(map);
-
-    //TO DO:
-    //(to implement)
-    //map should be under everything
-    //now it covers everything so you see nothing located on the sq of map
-    //map.set_fill_color(Graph_lib::Color::white);
-
 
 
 }
@@ -80,8 +71,6 @@ void Navig_window::hide_menu()
 }
 
 
-
-#include <iostream>
 void Navig_window::add_point()
 {
 
@@ -97,7 +86,9 @@ void Navig_window::add_point()
             //give user some notification about this
             return;
         }
-        towns.push_back(new Town{{x,y}, cb_clicked, name});
+        x += start_map.x;
+        y += start_map.y;
+        towns.push_back(new Town{{x, y}, cb_clicked, name});
         update_map();
         graph.add_vertex(name);
     }
@@ -199,9 +190,6 @@ void Navig_window::clicked(Graph_lib::Address widget)
             cnt_cliked = 0;
         }
     }
-
-
-
 
     //update_map(); // is not needed cause we need only to change 1 object
 

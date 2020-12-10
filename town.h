@@ -14,7 +14,6 @@ struct Town : Graph_lib::Button
 {
 public:
     Town(Graph_lib::Point xy, Graph_lib::Callback cb, const std::string name);
-    //~Town(){ };
 
     Graph_lib::Point pos;
     Graph_lib::Point center;

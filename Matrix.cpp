@@ -101,14 +101,6 @@ std::string Matrix::get_name(int num) const
 }
 int Matrix::get_num(std::string name) const
 {
-    std::cout << "Ok here" << std::endl;
-
-    for(auto it = towns.begin(); it != towns.end(); )
-    {
-        std::cout << it->first << ": " << it->second << std::endl;
-        it++;
-    }
-
     for(auto it = towns.begin(); it != towns.end(); )
     {
         if(it->first == name)
