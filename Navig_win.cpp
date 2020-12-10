@@ -246,8 +246,6 @@ void Navig_window::draw_way(std::vector<std::string> path)
         //show some notification to user
         return;
     }
-    for(auto el : path)
-        std::cout << el << std::endl;
 
     //drawing highlighted lines between cur and prev town of pass
     //(its guaranteed that those roads existed)
